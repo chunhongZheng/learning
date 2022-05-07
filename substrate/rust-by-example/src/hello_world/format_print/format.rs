@@ -90,6 +90,8 @@ pub fn format_comflex_display(){
     ].iter() {
         //{}调用的是impl Display for Color，0x{:X} 调用的是impl UpperHex for Color
         println!("{} 0x{:X}", *color, color)
+      //  println!("{} 0o{:o}", *color, color)  //编译报错，因为未实现8进制的方法
+
     }
 
 }
