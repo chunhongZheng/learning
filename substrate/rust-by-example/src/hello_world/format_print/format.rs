@@ -5,7 +5,7 @@
 //这种格式化功能是通过特征实现的，并且每种参数类型都有一个特征。 最常见的格式化特征是 Display，它处理未指定参数类型的情况：例如 {}。
 
 
-use std::fmt::{self, Formatter, Display};
+use std::fmt::{self, Formatter, Display, UpperHex};
 
 struct City {
     name: &'static str,
@@ -35,7 +35,25 @@ struct Color {
     green: u8,
     blue: u8,
 }
+//添加color自定义显示方法
 
+//RGB (128, 255, 90) 0x80FF5A
+// RGB (0, 3, 254) 0x0003FE
+// RGB (0, 0, 0) 0x000000
+impl Display for Color{
+    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
+        // write!(f, "RGB(");
+        // write!(f,"{},{},{}",self.red,self.green,self.blue);
+        // write!(f, ")")
+        write!(f, "RGB ({}, {}, {})", self.red, self.green, self.blue)
+    }
+}
+//UpperHex是为了按照大写的格式输出十六进制，用格式化符号{:X}来表示。{:02X}表示输出的长度为2，如果不足两位，则补0。
+impl UpperHex for Color {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        write!(f, "{:02X}{:02X}{:02X}", self.red, self.green, self.blue)
+    }
+}
 
 pub fn format_fn(){
   let c=City{
@@ -64,6 +82,16 @@ pub fn format_comflex_display(){
         // for fmt::Display.
         println!("{:?}", *color);
     }
+    // 16进制打印显示
+    for color in [
+        Color {red: 128, green: 255, blue: 90},
+        Color {red: 0, green: 3, blue: 254},
+        Color {red: 0, green: 0, blue: 0},
+    ].iter() {
+        //{}调用的是impl Display for Color，0x{:X} 调用的是impl UpperHex for Color
+        println!("{} 0x{:X}", *color, color)
+    }
+
 }
 //打印结果
 // Dublin: 53.35°N 6.260°W
