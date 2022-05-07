@@ -79,4 +79,43 @@ pub fn display_fn() {
     // Error. Both `Debug` and `Display` were implemented, but `{:b}`
     // requires `fmt::Binary` to be implemented. This will not work.
     // println!("What does Point2D look like in binary: {:b}?", point);
+
+    //因此，fmt::Display 已实现，但 fmt::Binary 尚未实现，因此无法使用。 std::fmt 有许多这样的特性，
+    // 每个特性都需要自己的实现。 这在 std::fmt 中有更详细的说明。
+}
+//为每个元素必须按顺序处理的结构实现 fmt::Display 是很棘手的。
+// 问题是每次都写！ 生成一个 fmt::Result。 正确处理此问题需要处理所有结果。 Rust 提供 ? 运营商正是为了这个目的。
+
+// Try `write!` to see if it errors. If it errors, return
+// the error. Otherwise continue.
+// write!(f, "{}", value)?;
+
+// Define a structure named `List` containing a `Vec`.
+struct List(Vec<i32>);
+
+//实现数组打印
+impl fmt::Display for List {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        // Extract the value using tuple indexing,
+        // and create a reference to `vec`.
+        let vec = &self.0;
+
+        write!(f, "[")?;
+
+        // Iterate over `v` in `vec` while enumerating the iteration
+        // count in `count`.
+        for (count, v) in vec.iter().enumerate() {
+            // For every element except the first, add a comma.
+            // Use the ? operator to return on errors.
+            if count != 0 { write!(f, ", ")?; }
+            write!(f, "{}", v)?;
+        }
+
+        // Close the opened bracket and return a fmt::Result value.
+        write!(f, "]")
+    }
+}
+pub fn display_list(){
+    let v = List(vec![1, 2, 3]);
+    println!("数组打印{}", v);
 }

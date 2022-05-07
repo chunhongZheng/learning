@@ -2,7 +2,7 @@ pub(crate) mod debug;  //外部可以引用到
 mod display;  //外部引用不到
 
 use crate::hello_world::format_print::debug::print_debug;
-use crate::hello_world::format_print::display::display_fn;  //引进子包中的打印函数 print_debug 正确语法
+use crate::hello_world::format_print::display::{display_fn, display_list};  //引进子包中的打印函数 print_debug 正确语法
 
 ///format!: write formatted text to String
 ///
@@ -58,4 +58,5 @@ pub fn format_print_fn(){
 
   //  print_debug();
     display_fn();
+    display_list();
 }
