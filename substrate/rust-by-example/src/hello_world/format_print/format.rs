@@ -50,7 +50,7 @@ impl Display for Color{
 }
 //UpperHex是为了按照大写的格式输出十六进制，用格式化符号{:X}来表示。{:02X}表示输出的长度为2，如果不足两位，则补0。
 impl UpperHex for Color {
-    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result{
         write!(f, "{:02X}{:02X}{:02X}", self.red, self.green, self.blue)
     }
 }
