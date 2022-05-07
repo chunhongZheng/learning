@@ -109,12 +109,14 @@ impl fmt::Display for List {
             // Use the ? operator to return on errors.
             if count != 0 { write!(f, ", ")?; }
             write!(f, "{}", v)?;
+         //   write!(f, "{0}:{1}", count,v)?;   count是坐标  v是值
         }
 
         // Close the opened bracket and return a fmt::Result value.
         write!(f, "]")
     }
 }
+
 pub fn display_list(){
     let v = List(vec![1, 2, 3]);
     println!("数组打印{}", v);
