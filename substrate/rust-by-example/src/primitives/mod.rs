@@ -1,3 +1,8 @@
+mod literal_operator;
+mod tuple;
+
+use crate::primitives::literal_operator::literal_operator_fn;
+use crate::primitives::tuple::tuple_fn;
 
 pub fn primitives_fn(){
 
@@ -21,8 +26,13 @@ pub fn primitives_fn(){
     mutable = 21;
 
     // Error! The type of a variable can't be changed.
-    mutable = true;
+    // mutable = true;
 
     // Variables can be overwritten with shadowing.
     let mutable = true;
+}
+
+pub fn primitives_fn_test(){
+   // literal_operator_fn();
+    tuple_fn();
 }

@@ -61,6 +61,6 @@ pub fn format_print_fn(){
   //  print_debug();
   //   display_fn();
   //   display_list();
-  //  format_fn();
+    format_fn();
     format_comflex_display();
 }

@@ -1,6 +1,9 @@
 mod trait_folder;
 mod hello_world;
+mod primitives;
+
 use crate::hello_world::format_print::format_print_fn;
+use crate::primitives::primitives_fn_test;
 //此处引进traitFoler目录下的module
 // use crate::trait_folder::return_trait::test_return_trait;
 
@@ -17,7 +20,8 @@ fn main() {
 
     // testDerive();
     //  test_return_trait();
-    format_print_fn();
+   // format_print_fn();
     //  test_return_trait();
+    primitives_fn_test();
 }
 
