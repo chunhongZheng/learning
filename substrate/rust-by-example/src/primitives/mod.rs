@@ -1,7 +1,9 @@
 mod literal_operator;
 mod tuple;
+mod slice;
 
 use crate::primitives::literal_operator::literal_operator_fn;
+use crate::primitives::slice::slice_test_fn;
 use crate::primitives::tuple::tuple_fn;
 
 pub fn primitives_fn(){
@@ -34,5 +36,6 @@ pub fn primitives_fn(){
 
 pub fn primitives_fn_test(){
    // literal_operator_fn();
-    tuple_fn();
+   // tuple_fn();
+    slice_test_fn();
 }

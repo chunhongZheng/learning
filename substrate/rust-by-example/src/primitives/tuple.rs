@@ -19,7 +19,7 @@ impl fmt::Display for Matrix{
         write!(f, "({} {})\n({} {})", self.0, self.1, self.2, self.3)
     }
 }
-//转置Matrix
+//转置Matrix  反转显示元组中的数据
 fn transpose(matrix: Matrix) -> Matrix {
     Matrix(matrix.0, matrix.2, matrix.1, matrix.3)
 }
