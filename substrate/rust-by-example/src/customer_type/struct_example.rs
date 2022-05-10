@@ -12,6 +12,7 @@ struct Point {
 }
 
 // 结构体可以作为另一个结构体的字段
+// 隐藏未使用代码警告的属性。
 #[allow(dead_code)]
 #[derive(Debug)]
 struct Rectangle {
