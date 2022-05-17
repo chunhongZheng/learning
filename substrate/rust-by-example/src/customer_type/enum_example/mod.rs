@@ -50,3 +50,26 @@ pub fn enum_fn_test(){
     inspect(rebecca);
     inspect(rohan);
 }
+// enum 也可以像 C 语言枚举那样使用。
+// 拥有隐式辨别值（implicit discriminator）的 enum（从0开始计数）
+enum Number {
+    Zero,
+    One,
+    Two,
+    Three,
+}
+// 拥有显式辨别值（explicit discriminator）的 enum
+enum Color {
+    Red = 0xff0000,
+    Green = 0x00ff00,
+    Blue = 0x0000ff,
+}
+
+pub fn enum_fn_test1() {
+    // `enum` 可以转成整型。
+    println!("zero is {}", Number::Zero as i32);
+    println!("one is {}", Number::One as i32);
+
+    println!("roses are #{:06x}", Color::Red as i32);
+    println!("violets are #{:06x}", Color::Blue as i32);
+}
