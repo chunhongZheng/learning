@@ -2,10 +2,12 @@ mod trait_folder;
 mod hello_world;
 mod primitives;
 mod customer_type;
+mod var_binding;
 
 use crate::customer_type::customer_type_test_fn;
 use crate::hello_world::format_print::format_print_fn;
 use crate::primitives::primitives_fn_test;
+use crate::var_binding::var_binding_fn;
 //此处引进traitFoler目录下的module
 // use crate::trait_folder::return_trait::test_return_trait;
 
@@ -25,6 +27,7 @@ fn main() {
    // format_print_fn();
     //  test_return_trait();
    // primitives_fn_test();
-    customer_type_test_fn();
+   // customer_type_test_fn();
+    var_binding_fn();
 }
 

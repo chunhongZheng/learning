@@ -3,7 +3,8 @@
 // 若您对此句有 更好的翻译或理解，希望指出来，谢谢。）。在 struct 中任何合法的变量在 enum 同样是合法的。
 
 mod use_example;
-
+mod linked_list;
+use crate::customer_type::enum_example::linked_list::List;
 // 创建一个 `enum` （枚举）来划分人的类别。注意命名和类型的信息是如何一起
 // 明确规定变量的：
 // `Engineer != Scientist` 和 `Height(i32) != Weight(i32)`。每者都不相同且
@@ -72,4 +73,18 @@ pub fn enum_fn_test1() {
 
     println!("roses are #{:06x}", Color::Red as i32);
     println!("violets are #{:06x}", Color::Blue as i32);
+}
+
+pub fn linked_list_fn_test() {
+    // 创建一个空链表
+    let mut list = List::new();
+
+    // 追加一些元素
+    list = list.prepend(1);
+    list = list.prepend(2);
+    list = list.prepend(3);
+
+    // 显示链表的最后状态
+    println!("linked list has length: {}", list.len());
+    println!("{}", list.stringify());
 }
