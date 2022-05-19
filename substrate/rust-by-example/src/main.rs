@@ -4,7 +4,9 @@ mod primitives;
 mod customer_type;
 mod var_binding;
 mod types_example;
+mod conversion;
 
+use crate::conversion::{from_test_fn1, from_test_fn2};
 use crate::customer_type::customer_type_test_fn;
 use crate::hello_world::format_print::format_print_fn;
 use crate::primitives::primitives_fn_test;
@@ -32,6 +34,8 @@ fn main() {
    // customer_type_test_fn(); //var_binding_fn();
    // type_example_test_fn();
   //  type_example_test_fn2();
-    type_example_test_fn4();
+  //  type_example_test_fn4();
+  //  from_test_fn1();
+    from_test_fn2();
 }
 
