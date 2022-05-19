@@ -63,3 +63,8 @@ pub fn print_debug(){
     println!("{:#?}", peter);
     //可以手动实现 fmt::Display 来控制显示
 }
+
+
+
+
+
