@@ -6,11 +6,15 @@ mod var_binding;
 mod types_example;
 mod conversion;
 mod expression_folder;
+mod loop_folder;
+mod for_folder;
 
 use crate::conversion::{from_test_fn1, from_test_fn2, from_test_fn3};
 use crate::customer_type::customer_type_test_fn;
 use crate::expression_folder::express_test_fn;
+use crate::for_folder::for_test_fn1;
 use crate::hello_world::format_print::format_print_fn;
+use crate::loop_folder::{loop_test_fn1, loop_test_fn2, loop_test_fn3};
 use crate::primitives::primitives_fn_test;
 use crate::types_example::{type_example_test_fn, type_example_test_fn2, type_example_test_fn3, type_example_test_fn4};
 use crate::var_binding::var_binding_fn;
@@ -40,6 +44,8 @@ fn main() {
   //  from_test_fn1();
   //  from_test_fn2();
    // from_test_fn3();
-    express_test_fn();
+  //  express_test_fn();
+  //  loop_test_fn3();
+    for_test_fn1();
 }
 
