@@ -51,8 +51,19 @@ pub fn from_test_fn2(){
     assert_eq!(EvenNumber::try_from(8), Ok(EvenNumber(8)));
     assert_eq!(EvenNumber::try_from(8), Err(()));
     assert_eq!(EvenNumber::try_from(5), Err(()));
+    // TryInto
 
+    let result: Result<EvenNumber, ()> = 8i32.try_into();
+    assert_eq!(result, Ok(EvenNumber(8)));
+    let result: Result<EvenNumber, ()> = 5i32.try_into();
+    assert_eq!(result, Err(()));
 }
 
+pub fn from_test_fn3(){
+    let parsed: i32 = "5".parse().unwrap();
+    let turbo_parsed = "10".parse::<i32>().unwrap();
 
+    let sum = parsed + turbo_parsed;
+    println!{"Sum: {:?}", sum};
+}
 

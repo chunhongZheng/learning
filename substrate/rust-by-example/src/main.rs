@@ -5,9 +5,11 @@ mod customer_type;
 mod var_binding;
 mod types_example;
 mod conversion;
+mod expression_folder;
 
-use crate::conversion::{from_test_fn1, from_test_fn2};
+use crate::conversion::{from_test_fn1, from_test_fn2, from_test_fn3};
 use crate::customer_type::customer_type_test_fn;
+use crate::expression_folder::express_test_fn;
 use crate::hello_world::format_print::format_print_fn;
 use crate::primitives::primitives_fn_test;
 use crate::types_example::{type_example_test_fn, type_example_test_fn2, type_example_test_fn3, type_example_test_fn4};
@@ -36,6 +38,8 @@ fn main() {
   //  type_example_test_fn2();
   //  type_example_test_fn4();
   //  from_test_fn1();
-    from_test_fn2();
+  //  from_test_fn2();
+   // from_test_fn3();
+    express_test_fn();
 }
 
