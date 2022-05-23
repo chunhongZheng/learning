@@ -38,12 +38,24 @@ fn for_test_fn2() {
 // 这并不是把集合变成迭代器的唯一方法，其他的方法有 iter 和iter_mut 函数。
 
 pub fn for_test_fn3() {
-    let names = vec!["Bob", "Frank", "Ferris"];
-
+    let mut names = vec!["Bob", "Frank", "Ferris","caspar"];
     for name in names.iter() {
         match name {
             &"Ferris" => println!("There is a rustacean among us!"),
             _ => println!("Hello {}", name),
         }
     }
+}
+//iter_mut - 可变地（mutably）借用集合中的每个元素，从而允许集合被就地修改。
+pub fn for_test_fn4(){
+    let mut names = vec!["Bob", "Frank", "Ferris"];
+
+    for name in names.iter_mut() {
+        *name = match name {
+            &mut "Ferris" => "There is a rustacean among us!",
+            _ => "Hello",
+        }
+    }
+    println!("names: {:?}", names);
+    //结果:  names: ["Hello", "Hello", "There is a rustacean among us!"]
 }
