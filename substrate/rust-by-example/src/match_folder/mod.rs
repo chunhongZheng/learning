@@ -151,9 +151,12 @@ pub fn match_test_dereference_fn() {
 }
 
 //解构struct
-
+struct Foo {
+    x: (u32, u32),
+    y: u32
+}
 pub fn match_test_struct_fn() {
-    struct Foo { x: (u32, u32), y: u32 }
+
 
     // 解构结构体的成员
     let foo = Foo { x: (1, 2), y: 3 };
