@@ -214,3 +214,67 @@ pub fn match_test_age_fn() {
         n             => println!("I'm an old person of age {:?}", n),
     }
 }
+
+
+
+
+//使用绑定来“解构” enum 变体
+fn some_number() -> Option<u32> {
+  //  Some(42)
+    None
+}
+pub fn match_test_option_fn(){
+    match some_number() {
+        // 得到 `Some` 可变类型，如果它的值（绑定到 `n` 上）等于 42，则匹配。
+        Some(n @ 42) => println!("The Answer: {}!", n),
+        // 匹配任意其他数字。
+        Some(n)      => println!("Not interesting... {}", n),
+        // 匹配任意其他值（`None` 可变类型）。
+        _            => (),
+    }
+}
+// // 将 `optional` 定为 `Option<i32>` 类型
+// let optional = Some(7);
+//
+// match optional {
+// Some(i) => {
+// println!("This is a really long string and `{:?}`", i);
+// // ^ 行首需要 2 层缩进。这里从 optional 中解构出 `i`。
+// // 译注：正确的缩进是好的，但并不是 “不缩进就不能运行” 这个意思。
+// },
+// _ => {},
+// // ^ 必须有，因为 `match` 需要覆盖全部情况。不觉得这行很多余吗？
+// };
+
+// if let
+
+pub fn match_test_ifLet_fn(){
+    // 全部都是 `Option<i32>` 类型
+    let number = Some(7);
+    let letter: Option<i32> = None;
+    let emoticon: Option<i32> = None;
+    // `if let` 结构读作：若 `let` 将 `number` 解构成 `Some(i)`，则执行
+    // 语句块（`{}`）
+    if let Some(i) = number {
+        println!("Matched {:?}!", i);
+    }
+    // 如果要指明失败情形，就使用 else：
+    if let Some(i) = letter {
+        println!("Matched {:?}!", i);
+    } else {
+        // 解构失败。切换到失败情形。
+        println!("Didn't match a number. Let's go with a letter!");
+    };
+    // 提供另一种失败情况下的条件。
+    let i_like_letters = false;
+
+    if let Some(i) = emoticon {
+        println!("Matched {:?}!", i);
+        // 解构失败。使用 `else if` 来判断是否满足上面提供的条件。
+    } else if i_like_letters {
+        println!("Didn't match a number. Let's go with a letter!");
+    } else {
+        // 条件的值为 false。于是以下是默认的分支：
+        println!("I don't like letters. Let's go with an emoticon :)!");
+    };
+}
