@@ -7,6 +7,7 @@
 use crate::function_folder::method::function_method_test_fn;
 
 mod method;
+mod closure_folder;
 
 // 和 C/C++ 不一样，Rust 的函数定义位置是没有限制的
 pub fn function_test_main() {
