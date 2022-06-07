@@ -15,7 +15,7 @@ use crate::conversion::{from_test_fn1, from_test_fn2, from_test_fn3};
 use crate::customer_type::customer_type_test_fn;
 use crate::expression_folder::express_test_fn;
 use crate::for_folder::{for_test_fn1, for_test_fn3, for_test_fn4};
-use crate::function_folder::function_test_main;
+use crate::function_folder::{function_test, function_test_main};
 use crate::hello_world::format_print::format_print_fn;
 use crate::loop_folder::{loop_test_fn1, loop_test_fn2, loop_test_fn3};
 use crate::match_folder::{match_test_age_fn, match_test_dereference_fn, match_test_fn, match_test_ifLet_fn, match_test_option_fn, match_test_struct_fn, match_test_triple_fn};
@@ -57,6 +57,7 @@ fn main() {
  //   match_test_age_fn();
  //   match_test_option_fn();
  //   match_test_ifLet_fn();
-    function_test_main();
+  //  function_test_main();
+    function_test();
 }
 

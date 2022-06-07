@@ -4,6 +4,8 @@
 //
 // 函数最后的表达式将作为返回值。也可以在函数内使用 return 语句来提前返一个值，甚至可以在循环或 if 内部使用。
 
+use crate::function_folder::method::function_method_test_fn;
+
 mod method;
 
 // 和 C/C++ 不一样，Rust 的函数定义位置是没有限制的
@@ -40,4 +42,9 @@ fn fizzbuzz_to(n: u32) {
     for n in 1..=n {
         fizzbuzz(n);
     }
+}
+
+
+pub fn function_test(){
+    function_method_test_fn();
 }
