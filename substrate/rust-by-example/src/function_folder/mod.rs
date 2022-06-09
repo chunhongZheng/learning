@@ -4,6 +4,7 @@
 //
 // 函数最后的表达式将作为返回值。也可以在函数内使用 return 语句来提前返一个值，甚至可以在循环或 if 内部使用。
 
+use crate::function_folder::closure_folder::{closure_fn_test_main};
 use crate::function_folder::method::function_method_test_fn;
 
 mod method;
@@ -47,5 +48,6 @@ fn fizzbuzz_to(n: u32) {
 
 
 pub fn function_test(){
-    function_method_test_fn();
+  //  function_method_test_fn();
+    closure_fn_test_main();
 }
