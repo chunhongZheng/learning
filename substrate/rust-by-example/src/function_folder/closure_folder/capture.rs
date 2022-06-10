@@ -116,9 +116,9 @@ pub fn closure_input_param_test() {
     apply(diary);
 
     // 闭包 `double` 满足 `apply_to_3` 的 trait 约束。
-    let double = |x| 2 * x;
+   // let double = |x| 2 * x;
 
-    println!("3 doubled: {}", apply_to_3(double));
+  //  println!("3 doubled: {}", apply_to_3(double));
 }
 
 
