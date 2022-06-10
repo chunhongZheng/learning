@@ -70,3 +70,66 @@ pub fn capture_fn_test() {
     //consume();   // 会报错 this value implements `FnOnce`, which causes it to be moved when called
     // ^ 试一试：将此行注释去掉。
 }
+
+//虽然 Rust 无需类型说明就能在大多数时候完成变量捕获，但在编写函数时，这种模糊写法是不允许的。
+// 当以闭包作为输入参数时，必须指出闭包的完整类型，它是通过使用以下 trait 中的一种来指定的。其受限制程度按以下顺序递减：
+// Fn：表示捕获方式为通过引用（&T）的闭包
+// FnMut：表示捕获方式为通过可变引用（&mut T）的闭包
+// FnOnce：表示捕获方式为通过值（T）的闭包
+// 译注：顺序之所以是这样，是因为 &T 只是获取了不可变的引用，&mut T 则可以改变变量，T 则是拿到了变量的所有权而非借用。
+
+//闭包 作为输入参数
+
+// 该函数将闭包作为参数并调用它。
+fn apply<F>(f: F) where
+// 闭包没有输入值和返回值。
+    F: FnOnce() {
+    // ^ 试一试：将 `FnOnce` 换成 `Fn` 或 `FnMut`。
+    f();
+}
+
+pub fn closure_input_param_test() {
+    use std::mem;
+
+    let greeting = "hello";
+    // 不可复制的类型。
+    // `to_owned` 从借用的数据创建有所有权的数据。
+    let mut farewell = "goodbye".to_owned();
+
+    // 捕获 2 个变量：通过引用捕获 `greeting`，通过值捕获 `farewell`。
+    let diary = || {
+        // `greeting` 通过引用捕获，故需要闭包是 `Fn`。
+        println!("I said {}.", greeting);
+
+        // 下文改变了 `farewell` ，因而要求闭包通过可变引用来捕获它。
+        // 现在需要 `FnMut`。
+        farewell.push_str("!!!");
+        println!("Then I screamed {}.", farewell);
+        println!("Now I can sleep. zzzzz");
+
+        // 手动调用 drop 又要求闭包通过值获取 `farewell`。
+        // 现在需要 `FnOnce`。
+        mem::drop(farewell);
+    };
+
+    // 以闭包作为参数，调用函数 `apply`。
+    apply(diary);
+
+    // 闭包 `double` 满足 `apply_to_3` 的 trait 约束。
+    let double = |x| 2 * x;
+
+    println!("3 doubled: {}", apply_to_3(double));
+}
+
+
+
+///闭包从周围的作用域中捕获变量是简单明了的。这样会有某些后果吗？确实有。
+/// 观察一下使用闭包作为函数参数，这要求闭包是泛型的，闭包定义的方式决定了这是必要的。
+
+// `F` 必须是泛型的。
+fn apply2<F>(f: F) where
+    F: FnOnce() {
+    f();
+}
+//当闭包被定义，编译器会隐式地创建一个匿名类型的结构体，用以储存闭包捕获的变量，
+// 同时为这个未知类型的结构体实现函数功能，通过 Fn、FnMut 或 FnOnce 三种 trait 中的一种。
