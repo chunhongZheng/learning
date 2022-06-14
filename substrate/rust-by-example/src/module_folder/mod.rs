@@ -114,3 +114,85 @@ pub fn module_fn_main_test() {
     //my_mod::private_nested::function();
     // 试一试 ^ 取消此行的注释
 }
+
+
+mod my {
+    // 一个公有的结构体，带有一个公有的字段（类型为泛型 `T`）
+    pub struct OpenBox<T> {
+        pub contents: T,
+    }
+
+    // 一个公有的结构体，带有一个私有的字段（类型为泛型 `T`）
+    #[allow(dead_code)]
+    pub struct ClosedBox<T> {
+        contents: T,
+    }
+
+    impl<T> ClosedBox<T> {
+        // 一个公有的构造器方法
+        pub fn new(contents: T) -> ClosedBox<T> {
+            ClosedBox {
+                contents: contents,
+            }
+        }
+    }
+}
+
+fn module_struct_test_fn() {
+    // 带有公有字段的公有结构体，可以像平常一样构造
+    let open_box_i32 =my::OpenBox{contents:1};
+    println!("The open box i32 contains: {}", open_box_i32.contents);
+    let open_box = my::OpenBox { contents: "public information" };
+
+    // 并且它们的字段可以正常访问到。
+    println!("The open box contains: {}", open_box.contents);
+
+    // 带有私有字段的公有结构体不能使用字段名来构造。
+    // 报错！`ClosedBox` 含有私有字段。
+    //let closed_box = my::ClosedBox { contents: "classified information" };
+    // 试一试 ^ 取消此行注释
+
+
+    // 不过带有私有字段的结构体可以使用公有的构造器来创建。
+    let _closed_box = my::ClosedBox::new("classified information");
+
+    // 并且一个结构体中的私有字段不能访问到。
+    // 报错！`content` 字段是私有的。
+    //println!("The closed box contains: {}", _closed_box.contents);
+    // 试一试 ^ 取消此行注释
+
+}
+
+mod deeply {
+    pub mod nested {
+        pub fn function_use() {
+            println!("called `deeply::nested::function()`")
+        }
+    }
+}
+//use 声明可以将一个完整的路径绑定到一个新的名字，从而更容易访问。
+// 将 `deeply::nested::function` 路径绑定到 `other_function`。
+use deeply::nested::function_use as other_function;
+fn function_use() {
+    println!("called `function()`");
+}
+
+pub fn module_use_test_fn() {
+    // 更容易访问 `deeply::nested::funcion`
+    other_function();
+
+    println!("Entering block");
+    {
+        // 这和 `use deeply::nested::function_use as function` 等价。
+        // 此 `function_use()` 将遮蔽外部的同名函数。
+        use deeply::nested::function_use;
+        function_use();
+
+        // `use` 绑定拥有局部作用域。在这个例子中，`function()`
+        // 的遮蔽只存在这个代码块中。
+        println!("Leaving block");
+    }
+
+    function_use();
+}
+
