@@ -8,6 +8,8 @@
 
 // 一个名为 `my_mod` 的模块
 
+mod super_folder;
+
 mod my_mod {
     // 模块中的项默认具有私有的可见性
     fn private_function() {
@@ -173,6 +175,8 @@ mod deeply {
 //use 声明可以将一个完整的路径绑定到一个新的名字，从而更容易访问。
 // 将 `deeply::nested::function` 路径绑定到 `other_function`。
 use deeply::nested::function_use as other_function;
+use crate::module_folder::super_folder::super_function_test;
+
 fn function_use() {
     println!("called `function()`");
 }
@@ -196,3 +200,8 @@ pub fn module_use_test_fn() {
     function_use();
 }
 
+// 可以在路径中使用 super （父级）和 self（自身）关键字，从而在访问项时消除 歧义，以及防止不必要的路径硬编码。
+
+pub fn module_super_test_fn(){
+    super_function_test();
+}
