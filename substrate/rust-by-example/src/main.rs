@@ -12,7 +12,10 @@ mod match_folder;
 mod function_folder;
 mod module_folder;
 mod crate_folder;
+mod cfg;
+mod generic_folder;
 
+use crate::cfg::cfg_linux_test;
 use crate::conversion::{from_test_fn1, from_test_fn2, from_test_fn3};
 use crate::customer_type::customer_type_test_fn;
 use crate::expression_folder::express_test_fn;
@@ -64,6 +67,7 @@ fn main() {
   //  function_test();
  //   module_fn_main_test();
  //   module_use_test_fn();
-    module_super_test_fn();
+ //   module_super_test_fn();
+      cfg_linux_test();
 }
 
