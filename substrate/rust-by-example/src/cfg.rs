@@ -33,5 +33,5 @@ fn conditional_function() {
 }
 
 fn main() {
-    conditional_function();
+    //conditional_function();
 }

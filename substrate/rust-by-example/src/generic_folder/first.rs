@@ -16,8 +16,6 @@ fn t_type_test(){
     // 创建一个 `SingleGen<char>` 类型的变量 `_char`，并令其值为 `SingleGen('a')`
     // 这里的 `SingleGen` 的类型参数是显式指定的。
     let _char: SingleGen<char> = SingleGen('a');
-
-    let _char1: SingleGen<int32>=SfingleGen(32);
     // `SingleGen` 的类型参数也可以隐式地指定。
     let _t    = SingleGen(A); // 使用在上面定义的 `A`。
     let _i32  = SingleGen(6); // 使用 `i32` 类型。
