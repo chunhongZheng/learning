@@ -7,7 +7,7 @@
 /// 这两种引用类型的差异似乎也无关紧要，因 为无论如何，static 变量都得显式地声明。
 // 全局变量是在所有其他作用域之外声明的。
 static LANGUAGE: &'static str = "Rust";
-
+static LANGUAGE2:  &str = "Rust";
 static mut name:&'static str ="caspar";  //可变的
 
 const  THRESHOLD: i32 = 10;
