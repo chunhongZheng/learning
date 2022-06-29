@@ -14,6 +14,7 @@ mod module_folder;
 mod crate_folder;
 mod cfg;
 mod generic_folder;
+mod scope_folder;
 
 use crate::cfg::cfg_linux_test;
 use crate::conversion::{from_test_fn1, from_test_fn2, from_test_fn3};
