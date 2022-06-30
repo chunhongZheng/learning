@@ -2,3 +2,5 @@
 // 也就是说，作用域告诉编译器什么时候借用是合法的、什么时候资源可以释放、以及变量何时被创建或销毁。
 mod RAII;
 mod ownership;
+mod borrow;
+mod lifetime;

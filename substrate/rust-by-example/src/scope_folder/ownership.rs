@@ -42,3 +42,34 @@ fn ownership_fn_test() {
     //println!("b contains: {}", b);
     // 试一试 ^ 去掉此行注释
 }
+
+
+
+//可变性
+//当所有权转移时，数据的可变性可能发生改变。
+
+
+fn immutable_fn_test() {
+    let immutable_box = Box::new(5u32);
+
+    println!("immutable_box contains {}", immutable_box);
+
+    // 可变性错误
+    //*immutable_box = 4;
+
+    // *移动* box，改变所有权（和可变性）
+    let mut mutable_box = immutable_box;
+
+    println!("mutable_box contains {}", mutable_box);
+
+    // 修改 box 的内容
+    *mutable_box = 4;
+
+    println!("mutable_box now contains {}", mutable_box);
+}
+
+//部分移动
+//在单个变量的解构内，可以同时使用 by-move 和 by-reference 模式绑定。这样做将导致变量的部分移动（partial move），
+// 这意味着变量的某些部分将被移动，而其他部分将保留。在这种情况下，后面不能整体使用父级变量，但是仍然可以使用只引用（而不移动）的部分。
+
+
