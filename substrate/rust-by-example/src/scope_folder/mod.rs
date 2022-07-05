@@ -4,3 +4,4 @@ mod RAII;
 mod ownership;
 mod borrow;
 mod lifetime;
+mod staticScope;

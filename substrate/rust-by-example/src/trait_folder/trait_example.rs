@@ -64,3 +64,20 @@ impl Animal for Sheep {
 }
 
 
+pub fn trait_example_fn_test() {
+    // 这种情况需要类型标注。
+    let mut dolly: Sheep = Animal::new("Dolly");
+    // 试一试 ^ 移除类型标注。
+
+    dolly.talk();
+    dolly.shear();
+    dolly.talk();
+
+
+    let  caspar1: Sheep = Animal::new("Caspar");
+    caspar1.talk();
+   // caspar1.shear();
+    caspar1.talk();
+
+}
+
