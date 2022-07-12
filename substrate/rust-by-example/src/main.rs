@@ -15,6 +15,7 @@ mod crate_folder;
 mod cfg;
 mod generic_folder;
 mod scope_folder;
+mod macro_folder;
 
 use crate::cfg::cfg_linux_test;
 use crate::conversion::{from_test_fn1, from_test_fn2, from_test_fn3};
@@ -25,6 +26,7 @@ use crate::function_folder::{function_test, function_test_main};
 use crate::generic_folder::generic_fn_test;
 use crate::hello_world::format_print::format_print_fn;
 use crate::loop_folder::{loop_test_fn1, loop_test_fn2, loop_test_fn3};
+use crate::macro_folder::macro_fn_test;
 use crate::match_folder::{match_test_age_fn, match_test_dereference_fn, match_test_fn, match_test_ifLet_fn, match_test_option_fn, match_test_struct_fn, match_test_triple_fn};
 use crate::module_folder::{module_fn_main_test, module_super_test_fn, module_use_test_fn};
 use crate::primitives::primitives_fn_test;
@@ -73,6 +75,7 @@ fn main() {
  //   module_super_test_fn();
  //     cfg_linux_test();
  //     generic_fn_test();
-      trait_fn_test();
+ //     trait_fn_test();
+      macro_fn_test();
 }
 
