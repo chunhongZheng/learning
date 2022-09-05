@@ -16,10 +16,12 @@ mod cfg;
 mod generic_folder;
 mod scope_folder;
 mod macro_folder;
+mod errorHandle_folder;
 
 use crate::cfg::cfg_linux_test;
 use crate::conversion::{from_test_fn1, from_test_fn2, from_test_fn3};
 use crate::customer_type::customer_type_test_fn;
+use crate::errorHandle_folder::errorHandle_fn_test;
 use crate::expression_folder::express_test_fn;
 use crate::for_folder::{for_test_fn1, for_test_fn3, for_test_fn4};
 use crate::function_folder::{function_test, function_test_main};
@@ -76,6 +78,7 @@ fn main() {
  //     cfg_linux_test();
  //     generic_fn_test();
  //     trait_fn_test();
-      macro_fn_test();
+ //     macro_fn_test();
+      errorHandle_fn_test();
 }
 
