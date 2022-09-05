@@ -12,7 +12,7 @@
 // 然而 expect 更有用，因为它允许你指定一条错误信息，以免万一还是出现 了错误。
 
 
-use crate::errorHandle_folder::optionAndUnWrap::test_optionAndUnWrap;
+use crate::errorHandle_folder::optionAndUnWrap::{test_multi_option, test_optionAndUnWrap};
 use crate::errorHandle_folder::panic::panic_fn_test;
 
 //当错误有可能发生，且应当由调用者处理时，使用 Result。
@@ -23,5 +23,6 @@ mod optionAndUnWrap;
 
 pub fn errorHandle_fn_test(){
   //  panic_fn_test();
-    test_optionAndUnWrap();
+  //  test_optionAndUnWrap();
+    test_multi_option();
 }
